@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/provider/favorite_provider.dart';
-import 'package:meals_app/provider/filter_provider.dart';
 
 class MealDetailsScreen extends ConsumerWidget {
   const MealDetailsScreen({
@@ -14,8 +13,7 @@ class MealDetailsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final favoriteMeals = ref.watch(filteredMealProvider);
-    final isFavorite = favoriteMeals.contains(meal);
+    final isFavorite = ref.watch(favoriteMealsProvider).contains(meal);
 
     return Scaffold(
       appBar: AppBar(
